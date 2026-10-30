@@ -7,6 +7,7 @@
 //   USER key         back
 //   hold USER 1.5 s  deep sleep (press dial to wake)
 #include <Arduino.h>
+#include <esp_sleep.h>
 #include <esp_task_wdt.h>
 
 #include "apps.h"

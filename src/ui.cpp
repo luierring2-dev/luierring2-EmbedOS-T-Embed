@@ -30,6 +30,10 @@ void IRAM_ATTR onEncoderEdge()
 }
 
 struct Button {
+    // Explicit constructor: the ESP32 Arduino core builds as C++11, where a
+    // struct with default member initialisers can't be brace-initialised.
+    Button(int p, uint32_t lm) : pin(p), longMs(lm) {}
+
     int pin;
     uint32_t longMs;
     bool down = false;
