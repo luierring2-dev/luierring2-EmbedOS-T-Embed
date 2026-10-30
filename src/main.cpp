@@ -18,13 +18,15 @@
 
 namespace {
 const App* const kApps[] = {
-    &apps::kSubGhz,  &apps::kInfrared, &apps::kNfc,    &apps::kWifiScan,
-    &apps::kLeds,    &apps::kBattery,  &apps::kSdCard, &apps::kSettings,
+    &apps::kSubGhz,      &apps::kInfrared, &apps::kUniversalIr, &apps::kNfc,
+    &apps::kWifiScan,    &apps::kLeds,     &apps::kBattery,     &apps::kSdCard,
+    &apps::kSettings,
 };
 constexpr int kAppCount = sizeof(kApps) / sizeof(kApps[0]);
 const char* const kSubtitles[] = {
     "Spectrum, frequency finder, RAW recorder",
     "Learn, replay and save remote codes",
+    "Built-in TV power/volume codes + blast",
     "Read 13.56 MHz card UIDs",
     "Nearby networks, channel and signal",
     "Rainbow, breathe, torch",
@@ -32,7 +34,7 @@ const char* const kSubtitles[] = {
     "Browse the TF card",
     "Brightness, sleep, charging, info",
 };
-const uint16_t kColours[] = {ui::kAccent2, 0xF81F, 0x041F, ui::kGood,
+const uint16_t kColours[] = {ui::kAccent2, 0xF81F, 0xFD20,    0x041F, ui::kGood,
                              0xFFE0,       ui::kGood, 0xBDF7, ui::kMuted};
 
 const App* gActive = nullptr;

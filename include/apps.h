@@ -13,6 +13,7 @@ struct App {
 namespace apps {
 extern const App kSubGhz;
 extern const App kInfrared;
+extern const App kUniversalIr;
 extern const App kNfc;
 extern const App kWifiScan;
 extern const App kLeds;
