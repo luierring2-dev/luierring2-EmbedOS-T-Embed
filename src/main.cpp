@@ -13,6 +13,7 @@
 #include "apps.h"
 #include "board.h"
 #include "leds.h"
+#include "multiboot.h"
 #include "power.h"
 #include "ui.h"
 
@@ -99,6 +100,10 @@ void setup()
     boardDeselectSpi();
     pinMode(pins::kNrfCe, OUTPUT);
     digitalWrite(pins::kNrfCe, LOW);
+
+    // Under multiboot, point the next cold boot back at the launcher so the
+    // boot menu returns on every power-on. Harmless when flashed standalone.
+    multiboot::returnToLauncherNextBoot();
 
     input::begin();
     ui::begin();

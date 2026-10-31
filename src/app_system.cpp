@@ -2,6 +2,7 @@
 #include <esp_chip_info.h>
 
 #include "apps.h"
+#include "multiboot.h"
 #include "board.h"
 #include "power.h"
 
@@ -77,7 +78,7 @@ const App apps::kBattery = {"Battery", battapp::enter, battapp::loop, battapp::e
 
 // ======================= Settings =======================
 namespace setapp {
-enum Row { Brightness, Dim, Sleep, LedBright, Reverse, Charge, SleepNow, Info, RowCount };
+enum Row { Brightness, Dim, Sleep, LedBright, Reverse, Charge, BootMenu, SleepNow, Info, RowCount };
 ui::ListView gList;
 bool gEditing = false;
 bool gDirty = true;
@@ -172,6 +173,14 @@ bool loop(Key k)
         if (k == Key::Select) {
             switch (gList.selected) {
                 case Reverse: s.reverseEncoder = !s.reverseEncoder; break;
+                case BootMenu:
+                    if (multiboot::available()) {
+                        power::saveSettings();
+                        multiboot::bootSlot(multiboot::Slot::Launcher);  // reboots
+                    } else {
+                        ui::toast("No boot menu installed", ui::kBad);
+                    }
+                    break;
                 case SleepNow: power::saveSettings(); power::deepSleep();
                 case Info: gShowInfo = true; return true;
                 default: gEditing = true; break;
@@ -205,6 +214,7 @@ bool loop(Key k)
     rows[LedBright] = "LED brightness      " + String(s.ledBrightness);
     rows[Reverse] = String("Reverse encoder     ") + (s.reverseEncoder ? "on" : "off");
     rows[Charge] = "Charge current      " + String(s.chargeLimitMa) + " mA";
+    rows[BootMenu] = multiboot::available() ? "Return to boot menu" : "Boot menu (not installed)";
     rows[SleepNow] = "Sleep now (press dial to wake)";
     rows[Info] = "System info";
     const char* items[RowCount];

@@ -1,0 +1,13 @@
+# EmbedOS multiboot layout for the 16 MB T-Embed CC1101.
+# factory  = the boot launcher (always runs first)
+# ota_0    = EmbedOS
+# ota_1    = slot B  (your own firmware, e.g. Bruce built for this table)
+# ota_2    = slot C  (your own firmware, e.g. a Flipper ESP32 port)
+# Name,     Type, SubType, Offset,    Size
+nvs,        data, nvs,     0x9000,    0x5000,
+otadata,    data, ota,     0xe000,    0x2000,
+factory,    app,  factory, 0x10000,   0x100000,
+ota_0,      app,  ota_0,   0x110000,  0x400000,
+ota_1,      app,  ota_1,   0x510000,  0x400000,
+ota_2,      app,  ota_2,   0x910000,  0x400000,
+storage,    data, fat,     0xd10000,  0x2f0000,
