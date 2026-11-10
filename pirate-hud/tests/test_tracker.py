@@ -148,6 +148,24 @@ class TrackerTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.t.set_rate(0)
 
+    def test_save_retries_when_file_is_briefly_locked(self):
+        import os
+        import tracker as tr
+        real, calls = os.replace, []
+        def flaky(a, b):
+            calls.append(1)
+            if len(calls) < 3:
+                raise PermissionError("låst af OneDrive")
+            return real(a, b)
+        tr.os.replace = flaky
+        try:
+            self.t.chest()
+            self.t.save()
+        finally:
+            tr.os.replace = real
+        self.assertEqual(len(calls), 3)
+        self.assertEqual(json.loads((self.dir / "state.json").read_text(encoding="utf-8"))["total_chests"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

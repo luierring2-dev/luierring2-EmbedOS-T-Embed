@@ -9,6 +9,8 @@ sidste fund, hvad det svarer til i chance, og hvor langt der realistisk er igen.
 
 ## Kom i gang (5 minutter)
 
+**Trin-for-trin med fejlfinding: se [GUIDE.md](GUIDE.md).** Kort version:
+
 1. Installér Python fra python.org, og sæt flueben i **"Add to PATH"**.
 2. Sæt Fortnite til **Vinduesbaseret fuldskærm** (Indstillinger → Video → Vinduestilstand).
    I almindelig fuldskærm kan *intet* overlay vises oven på spillet.

@@ -234,7 +234,15 @@ class Tracker:
         self.data_dir.mkdir(parents=True, exist_ok=True)
         tmp = self.state_path.with_suffix(".tmp")
         tmp.write_text(json.dumps(asdict(self.state), indent=2, ensure_ascii=False), encoding="utf-8")
-        os.replace(tmp, self.state_path)   # atomisk: ingen halve filer ved strømsvigt
+        for attempt in range(5):
+            try:
+                os.replace(tmp, self.state_path)   # atomisk: ingen halve filer ved strømsvigt
+                return
+            except PermissionError:
+                # OneDrive/antivirus kan holde filen et øjeblik
+                if attempt == 4:
+                    raise
+                time.sleep(0.05 * (attempt + 1))
 
     # ---------------------------------------------------------- intern
     def _push(self, action: tuple) -> None:

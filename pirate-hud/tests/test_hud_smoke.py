@@ -141,6 +141,30 @@ class HudSmokeTest(unittest.TestCase):
         self.press("corner")
         self.assertIn(self.app.corner, self.hud.CORNERS)
 
+    def test_hides_when_fortnite_not_focused_but_never_in_demo(self):
+        import winapi
+        real = winapi.fortnite_has_focus
+        winapi.fortnite_has_focus = lambda: False
+        try:
+            self.app.cfg["hide_when_not_fortnite"] = True
+            self.app.started -= 10                      # forbi de første 8 sekunder
+            self.app.apply_visibility()
+            self.assertEqual(float(self.root.attributes("-alpha")), 0.0)
+            winapi.fortnite_has_focus = lambda: True
+            self.app.apply_visibility()
+            self.assertGreater(float(self.root.attributes("-alpha")), 0.5)
+
+            winapi.fortnite_has_focus = lambda: False
+            self.app.shutdown()
+            self.root = tk.Tk()
+            self.app = self.hud.App(self.root, self.cfg, str(self.log), demo=True, use_hotkeys=False)
+            self.app.cfg["hide_when_not_fortnite"] = True
+            self.app.started -= 10
+            self.app.apply_visibility()
+            self.assertGreater(float(self.root.attributes("-alpha")), 0.5)
+        finally:
+            winapi.fortnite_has_focus = real
+
 
 if __name__ == "__main__":
     unittest.main()

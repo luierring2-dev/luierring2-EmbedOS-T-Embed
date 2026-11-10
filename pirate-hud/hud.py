@@ -453,7 +453,7 @@ class App:
 
     def apply_visibility(self) -> None:
         visible = not self.manual_hidden
-        if visible and self.cfg["hide_when_not_fortnite"] and time.time() - self.started > 8:
+        if visible and self.cfg["hide_when_not_fortnite"] and not self.demo and time.time() - self.started > 8:
             focus = winapi.fortnite_has_focus()
             visible = focus is not False
         alpha = self.cfg["opacity"] if visible else 0.0
