@@ -1,0 +1,21 @@
+{
+  "map": "Crossbones Isle",
+  "example": true,
+  "_note": "EKSEMPELDATA fra den gamle pakke – positionerne er opdigtede. Erstat med convert_dump.py, eller sæt show_map til false i config.json.",
+  "grid": { "cols": 10, "rows": 10 },
+  "pois": [],
+  "spawns": [
+    { "poi": "Rubber Resort", "grid": "G4", "nx": 0.64, "ny": 0.38, "type": "std" },
+    { "poi": "Rubber Resort", "grid": "G5", "nx": 0.66, "ny": 0.46, "type": "std" },
+    { "poi": "Rubber Resort", "grid": "H4", "nx": 0.72, "ny": 0.40, "type": "rare" },
+    { "poi": "Lantern Landing", "grid": "C3", "nx": 0.28, "ny": 0.30, "type": "std" },
+    { "poi": "Lantern Landing", "grid": "D3", "nx": 0.36, "ny": 0.31, "type": "std" },
+    { "poi": "Lantern Landing", "grid": "D4", "nx": 0.38, "ny": 0.39, "type": "rare" },
+    { "poi": "Loguetown", "grid": "B7", "nx": 0.20, "ny": 0.68, "type": "std" },
+    { "poi": "Loguetown", "grid": "C7", "nx": 0.29, "ny": 0.70, "type": "std" },
+    { "poi": "Arlong Park", "grid": "F3", "nx": 0.58, "ny": 0.24, "type": "std" },
+    { "poi": "Plunder Port", "grid": "E9", "nx": 0.46, "ny": 0.80, "type": "std" },
+    { "poi": "Cursed Cavern", "grid": "H8", "nx": 0.74, "ny": 0.70, "type": "buried" },
+    { "poi": "The Chest", "grid": "E9", "nx": 0.46, "ny": 0.88, "type": "buried" }
+  ]
+}

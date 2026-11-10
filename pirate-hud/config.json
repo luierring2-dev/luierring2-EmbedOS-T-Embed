@@ -1,0 +1,42 @@
+{
+  "_hjaelp": "Ændringer slår igennem mens HUD'en kører (efter ca. 2 sek). Nye taster kræver genstart. Husk: en backslash skrives som \\ i JSON (dobbelt).",
+
+  "odds_per_chest": 137500,
+  "_odds_note": "1 ud af N pr. kiste. Tallet kommer fra din gamle config og er IKKE verificeret – ret det hvis du finder en bedre kilde.",
+  "boost": 1.0,
+  "_boost_note": "Sæt fx 2.0 under et event med dobbelt chance.",
+
+  "corner": "tl",
+  "_corner_note": "tl/tr = øverst venstre/højre, ml/mr = midt, bl/br = nederst. Ikke tr: der sidder Fortnites minikort. offset_x/offset_y flytter fint (pixels, kan være negative).",
+  "offset_x": 0,
+  "offset_y": 0,
+  "scale": 1.0,
+  "opacity": 0.9,
+  "hide_when_not_fortnite": true,
+
+  "show_map": true,
+  "map_image": "",
+  "_map_note": "Valgfrit: sti til et PNG-billede af kortet (kvadratisk). Gemmer du det i denne mappe, er filnavnet nok.",
+  "spawns_file": "spawns.json",
+  "route": ["Rubber Resort", "Lantern Landing", "Loguetown"],
+
+  "hotkeys": {
+    "chest": "F8",
+    "undo": "F7",
+    "found": "ctrl+F8",
+    "toggle": "F9",
+    "corner": "ctrl+F9",
+    "new_match": "F10"
+  },
+
+  "log_file": "",
+  "capture_chest_windows": true,
+
+  "patterns": {
+    "_note": "Regex. Flere pr. event er ok. Tjek dem med tjek-log.bat. Kun MATCH_START/MATCH_END bruges til noget vigtigt; CHEST er tom indtil analyser-kister.bat har fundet en rigtig linje.",
+    "MATCH_START": ["Match State Changed from \\w+ to InProgress"],
+    "MATCH_END": ["Match State Changed from \\w+ to (?:WaitingPostMatch|LeavingMap)"],
+    "LOBBY": ["LoadMap.*/Game/Maps/Frontend"],
+    "CHEST": []
+  }
+}

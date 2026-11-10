@@ -1,0 +1,4 @@
+data/
+kalibrering/
+__pycache__/
+*.pyc
