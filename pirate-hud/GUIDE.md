@@ -1,9 +1,26 @@
 # Guide: sådan får du Pirate Token HUD til at virke
 
-Du skal bruge en Windows-pc med Fortnite og filen `pirate-hud.zip`. Det tager ca. 10 minutter.
-Trin 1–5 er nødvendige. Trin 6–9 gør den bedre.
+Du skal bruge en Windows-pc med Fortnite og filen `pirate-hud.zip`.
+
+## Den nemme vej (ca. 3 minutter)
+
+1. Højreklik på `pirate-hud.zip` og vælg **Udpak alle …**. Vælg fx `C:\Users\<dit navn>`, ikke en OneDrive-mappe.
+2. Åbn den udpakkede mappe, og dobbeltklik **`installer.bat`**.
+   Viser Windows *"Windows beskyttede din pc"*: klik **Flere oplysninger** og så **Kør alligevel**.
+3. Svar **J** (eller tryk Enter) på spørgsmålene. Installeren:
+   - finder Python, eller installerer Python 3.13 kun for din bruger (ingen admin)
+   - sætter Fortnite til **Windowed Fullscreen**, med backup af dine indstillinger. Fortnite skal være lukket
+   - laver genvejen **Pirate Token HUD** på skrivebordet
+   - viser demoen
+4. Fortsæt ved **trin 5** herunder.
+
+Går installeren i stå eller fejler, så tag et billede af vinduet. Du kan også følge trin 1–4 i hånden.
 
 ---
+
+## Den manuelle vej
+
+Trin 1–5 er nødvendige. Trin 6–9 gør den bedre.
 
 ## Trin 1 – Installér Python (kun én gang)
 
@@ -54,7 +71,7 @@ Sker der ingen ting, eller blinker vinduet og lukker? Se **Fejlfinding** nederst
 
 ## Trin 5 – Brug den
 
-1. Dobbeltklik **`start.bat`**. Det er lige meget om Fortnite allerede kører.
+1. Dobbeltklik genvejen **Pirate Token HUD** på skrivebordet (eller `start.bat` i mappen). Det er lige meget om Fortnite allerede kører.
 2. **Lad det sorte vindue være åbent.** Minimér det. Lukker du det, lukker HUD'en.
 3. Start Fortnite. HUD'en vises når Fortnite har fokus og skjuler sig når du Alt+Tabber.
    De første 8 sekunder vises den altid, så du kan se at den kører.

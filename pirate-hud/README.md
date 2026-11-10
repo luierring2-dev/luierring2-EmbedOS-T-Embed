@@ -9,7 +9,10 @@ sidste fund, hvad det svarer til i chance, og hvor langt der realistisk er igen.
 
 ## Kom i gang (5 minutter)
 
-**Trin-for-trin med fejlfinding: se [GUIDE.md](GUIDE.md).** Kort version:
+**Nemmest: pak zip-filen ud og dobbeltklik `installer.bat`.** Den installerer Python, sætter Fortnite
+til Windowed Fullscreen og laver en genvej. Trin-for-trin og fejlfinding: [GUIDE.md](GUIDE.md).
+
+Manuelt:
 
 1. Installér Python fra python.org, og sæt flueben i **"Add to PATH"**.
 2. Sæt Fortnite til **Vinduesbaseret fuldskærm** (Indstillinger → Video → Vinduestilstand).
